@@ -223,37 +223,6 @@ with col3:
         if len(st.session_state.kpis['revenue']) > 0:
             st.subheader("Financial Performance")
             fig, ax = plt.subplots(figsize=(10, 6))
-            revenue_data = [0] + st.session_state.kpis['revenue']  # Add 0 for initial week
-            costs_data = [0] + st.session_state.kpis['costs']  # Add 0 for initial week
             
-            # Ensure arrays are the same length as weeks
-            if len(revenue_data) < len(weeks):
-                revenue_data = revenue_data + [0] * (len(weeks) - len(revenue_data))
-            if len(costs_data) < len(weeks):
-                costs_data = costs_data + [0] * (len(weeks) - len(costs_data))
-                
-            ax.bar(weeks, revenue_data, label='Revenue')
-            ax.plot(weeks, costs_data, 'r-', marker='s', label='Inventory Cost')
-            ax.set_xlabel('Week')
-            ax.set_ylabel('USD ($)')
-            ax.legend()
-            ax.grid(True)
-            st.pyplot(fig)
-    else:
-        st.write("Run the simulation for at least 2 weeks to see visualizations. ⏳")
-
-# Instructions and discussion section at the bottom
-st.header("🤔 Group Discussion")
-st.markdown("""
-### ❓ Discussion Questions:
-1. How did your decisions affect the entire supply chain?
-2. What strategies worked well for managing unexpected events?
-3. Which KPIs were most important to track for success?
-4. How would you improve your approach in a second run?
-
-### ✅ Key Learnings:
-- Observe how inventory levels at one stage affect other stages
-- Note the financial impact of different supply chain decisions
-- Consider the trade-offs between inventory levels and service levels (OTIF)
-- Evaluate risk mitigation strategies for supply chain disruptions
-""")
+            # --- FIX IS HERE ---
+            # The [0] + was removed because len
